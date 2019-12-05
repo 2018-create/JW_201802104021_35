@@ -1,0 +1,206 @@
+{
+	"info": {
+		"_postman_id": "2d255f8b-3b55-4659-909a-6e41d8ded64a",
+		"name": "TeacherTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET localhost:8080/teacher.ctl",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "068c660c-8a05-433a-be4f-8eafb063b2ee",
+						"exec": [
+							"tests[\"Body matches string 王磊\"] = responseBody.has(\"王磊\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"description\":\"土木学院\",\"no\":\"02\",\"remarks\":\" \",\"id\":1}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/teacher.ctl",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"teacher.ctl"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST localhost:8080/teacher.ctl",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b89898eb-154f-4c9c-82c3-9dcc6fdf2172",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"add response\"] = jsonData.message === \"增加成功\""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"王磊\",\r\n\"proftitle\":{\"id\":1},\r\n\"degree\":{\"id\":1},\r\n\"department\":{\"id\":1}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/teacher.ctl",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"teacher.ctl"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT localhost:8080/teacher.ctl",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "630767bd-6667-4061-8782-db8b9e615db5",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"update response\"] = jsonData.message === \"修改成功\""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"李华\",\r\n\"proftitle\":{\"id\":1},\r\n\"degree\":{\"id\":1},\r\n\"department\":{\"id\":1},\r\n\"id\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/teacher.ctl",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"teacher.ctl"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE localhost:8080/teacher.ctl",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9532e5f3-2dcf-4de6-b401-821a77ed71e3",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"delete response\"] = jsonData.message === \"删除成功\""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"李华\",\r\n\"proftitle\":{\"id\":1},\r\n\"degree\":{\"id\":1},\r\n\"department\":{\"id\":1},\r\n\"id\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/teacher.ctl?id=3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"teacher.ctl"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

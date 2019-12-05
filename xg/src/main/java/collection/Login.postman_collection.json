@@ -1,0 +1,101 @@
+{
+	"info": {
+		"_postman_id": "f2bf354c-483b-4252-8104-c84972c0602b",
+		"name": "Login",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Logged",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/loginController?username=01&password=01",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"loginController"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "01"
+						},
+						{
+							"key": "password",
+							"value": "01"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/logoutController",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logoutController"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createSession",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getSession",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				},
+				"description": "\n"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "f5461865-9693-4815-a8fd-21336c72deef",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "ef7f31ac-4a22-43e2-8f90-9d9938292dcc",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

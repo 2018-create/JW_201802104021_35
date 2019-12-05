@@ -1,0 +1,89 @@
+create database bysj default character set utf8 collate utf8_general_ci;
+use bysj;
+create table Degree(
+id bigint not null auto_increment,
+no varchar(255) not null,
+description varchar(255) not null,
+remarks varchar(255),
+primary key(id)
+);
+create table School(
+id bigint not null auto_increment,
+description varchar(255) not null,
+no varchar(255) not null,
+remarks varchar(255),
+primary key (id)
+);
+create table Department(
+id bigint not null auto_increment,
+description varchar(255) not null,
+no varchar(255) not null,
+remarks varchar(255),
+school_id bigint not null,
+FOREIGN KEY(school_id) REFERENCES School(id),
+primary key (id)
+);
+
+create table ProfTitle(
+id bigint not null auto_increment,
+no varchar(255) not null,
+description varchar(255) not null,
+remarks varchar(255),
+primary key(id)
+);
+create table Teacher(
+id bigint not null auto_increment,
+name varchar(255) not null,
+profTitle_id bigint not null,
+degree_id bigint not null,
+department_id bigint not null,
+FOREIGN KEY(degree_id) REFERENCES Degree(id),
+FOREIGN KEY(department_id) REFERENCES Department(id),
+FOREIGN KEY(profTitle_id) REFERENCES ProfTitle(id),
+primary key (id)
+);
+
+FOREIGN KEY(department_id) REFERENCES Department(id),
+
+DELIMITER //
+create procedure sp_addSchool(
+	in description varchar(255),
+	no varchar(255),
+	remarks varchar(255),
+	out id int
+)
+BEGIN
+	insert into school (description,no,remarks)
+	values(description,no,remarks);
+	select LAST_INSERT_ID() INTO id;	
+END
+//
+
+DELIMITER ;
+
+insert into School (id,no,description,remarks) 
+values(1,"01","管理学院"," ");
+insert into Department(id,no,description,remarks,school_id) 
+values(1,"01","信管"," ",1);
+insert into ProfTitle (id,no,description,remarks) 
+values(1,"01","教授"," ");
+insert into Degree(id,no,description,remarks) 
+values(1,"01","博士"," ");
+insert into Teacher(id,name,profTitle_id,degree_id,department_id) 
+values(1,"刘梅",1,1,1);
+drop
+show  procedure status like'sp%' \G;
+
+
+
+
+int profTitle_id = Integer.parseInt(jsonObject.getString("profTitle_id"));
+        int degree_id = Integer.parseInt(jsonObject.getString("degree_id"));
+        int department_id = Integer.parseInt(jsonObject.getString("department_id"));
+        try {
+            teacherToAdd.setProfTitle(ProfTitleService.getInstance().find(profTitle_id));
+            teacherToAdd.setDegree(DegreeService.getInstance().find(degree_id));
+            teacherToAdd.setDepartment(DepartmentService.getInstance().find(department_id));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
